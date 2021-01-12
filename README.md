@@ -27,3 +27,7 @@
 - Nota: Es posible que necesite refactorizar.
 
 - Envie sus cambios a este repositorio en un "branch" personal.
+
+## Diagrama de clases
+
+![ClassDiagram](https://imgur.com/75Sxn4L)
