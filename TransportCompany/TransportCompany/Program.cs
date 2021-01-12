@@ -12,13 +12,8 @@ namespace ClientApp
 		private static void RunConsoleApp()
 		{
 			Console.WriteLine("Hello User!");
-
-			
-			// Your code here...
-
-
 			Console.WriteLine("Thank you for using our services. Press any key to exit...");
-			Console.ReadLine();
+			Console.ReadKey();
 		}
 	}
 }
