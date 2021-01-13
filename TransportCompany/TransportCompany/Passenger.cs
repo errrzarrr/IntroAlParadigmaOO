@@ -10,22 +10,25 @@ namespace ClientApp
         protected string origin;
         protected string destiny;
 
-        public Passenger(string name, string origin, string destiny)
-        {
-            this.name = name;
-            this.origin = origin;
-            this.destiny = destiny;
-        }
-
         public void Pay(int fee)
         {
             Console.WriteLine($"Paying ${fee} to driver...");
 
         }
 
+        public void SetOrigin(string origin)
+        {
+            this.origin = origin;
+        }
+
         public string GetOrigin()
         {
             return this.origin;
+        }
+
+        public void SetDestiny(string destiny)
+        {
+            this.destiny = destiny;
         }
 
         public string GetDestiny()

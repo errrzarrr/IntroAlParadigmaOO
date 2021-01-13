@@ -4,12 +4,43 @@ using System.Text;
 
 namespace ClientApp
 {
-	class Driver : IDriver
+	class Driver : Person, IDriver
 	{
+		private string licenseId;
+		private Vehicle vehicle;
 
-		public void DriveVehicle() {
+		public virtual void SetLicense(string licenseId)
+        {
+			this.licenseId = licenseId;
+        }
 
-			Console.WriteLine("Driving Vehicle");
+		public string GetLicense()
+        {
+			return licenseId;
+        }
+
+		public void SetVehicle(Vehicle vehicle)
+        {
+			this.vehicle = vehicle;
+        }
+
+		public Vehicle GetVehicle()
+        {
+			return vehicle;
+        }
+
+		bool CanDriveThisVechicle()
+        {
+			if (string.IsNullOrEmpty(licenseId)) return false;
+			else return true;
+		}
+
+		public virtual void DriveVehicle() {
+
+			if (CanDriveThisVechicle())
+				Console.WriteLine("Driving Vehicle");
+			else
+				Console.WriteLine("Driver doesn't have license, so he can't drive!");
 
 		}
 

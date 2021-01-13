@@ -5,14 +5,18 @@ using System.Text;
 namespace ClientApp
 {
 
-    class Pilot : Person, IDriver
+    class Pilot : Driver
     {
 
-        protected string license;
-
-        public void DriveVehicle()
+        public Pilot()
         {
-            Console.WriteLine("Hi! i'm your pilot drive");
+            SetLicense("Pro-");
+        }
+
+        public override void SetLicense(string licenseId)
+        {
+            string license = GetLicense() + licenseId;
+            base.SetLicense(license);
         }
 
     }
