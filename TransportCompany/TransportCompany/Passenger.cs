@@ -7,28 +7,27 @@ namespace ClientApp
     class Passenger : Person
     {
 
-        public String origin;
-        public String destiny;
+        public string origin;
+        public string destiny;
 
-        public Passenger(String origin, String destiny)
+        public Passenger(string origin, string destiny)
         {
             this.origin = origin;
             this.destiny = destiny;
         }
 
-        public int Pay(Driver driver)
+        public void Pay(int fee)
         {
-            Console.WriteLine("Paying...");
+            Console.WriteLine($"Paying ${fee} to driver...");
 
-            return 10;
         }
 
-        public String GetOrigin()
+        public string GetOrigin()
         {
             return this.origin;
         }
 
-        public String GetDestiny()
+        public string GetDestiny()
         {
             return this.destiny;
         }

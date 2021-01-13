@@ -6,20 +6,20 @@ namespace ClientApp
 {
     abstract class Person
     {
-        protected String name;
+        protected string name;
         protected DateTime dateOfBirth;
 
-        public void Talk()
+        public virtual void Talk()
         {
             Console.WriteLine("I'm talking");
         }
 
-        public void SetName(String name)
+        public void SetName(string name)
         {
             this.name = name;
         }
 
-        public String GetName()
+        public string GetName()
         {
             return this.name;
         }
