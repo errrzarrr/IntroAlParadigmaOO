@@ -7,11 +7,12 @@ namespace ClientApp
     class Passenger : Person
     {
 
-        public string origin;
-        public string destiny;
+        protected string origin;
+        protected string destiny;
 
-        public Passenger(string origin, string destiny)
+        public Passenger(string name, string origin, string destiny)
         {
+            this.name = name;
             this.origin = origin;
             this.destiny = destiny;
         }

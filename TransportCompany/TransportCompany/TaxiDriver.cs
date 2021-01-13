@@ -29,7 +29,7 @@ namespace ClientApp
 
         public void CarryThePassanger()
         {
-            Console.WriteLine($"Carrying the passenger from {passenger.origin} to {passenger.destiny}");
+            Console.WriteLine($"Carrying {passenger.GetName()} from {passenger.GetOrigin()} to {passenger.GetDestiny()}...");
         }
 
         public void ChargeToPassenger()

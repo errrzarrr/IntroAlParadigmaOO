@@ -12,7 +12,7 @@ namespace ClientApp
 		private static void RunConsoleApp()
 		{
 			Console.WriteLine("Hello User!");
-			Passenger passenger1 = new Passenger("Los mameyes", "Av. La Gaviota");
+			Passenger passenger1 = new Passenger("Juanito", "Los mameyes", "Av. La Gaviota");
 			TaxiDriver taxiDriver = new TaxiDriver(passenger1);
 
 			taxiDriver.CarryThePassanger();
