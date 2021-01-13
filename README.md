@@ -30,4 +30,5 @@
 
 ## Diagrama de clases
 
-![ClassDiagram](https://imgur.com/75Sxn4L)
+
+![](./ClassDiagram.png)
