@@ -8,9 +8,9 @@ namespace ClientApp
 	{
     protected string name;
     protected DateTime dateOfBirth;
-    public void Talk(String words)
+    public void Talk()
     {
-      Console.WriteLine(words);
+      Console.WriteLine($"*My name is {this.GetName()}");
     }
     public void SetName(String name)
     {
@@ -20,13 +20,13 @@ namespace ClientApp
     {
       return this.name;
     }
-        public void SetDateOfBirth(DateTime dateOfBirth)
+    public void SetDateOfBirth(DateTime dateOfBirth)
     {
       this.dateOfBirth = dateOfBirth;
     }
-    public String GetDateOfBirth ()
+    public DateTime GetDateOfBirth ()
     {
-      return this.dateOfBirth.ToString();
+      return this.dateOfBirth;
     }
   }
 }

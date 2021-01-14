@@ -11,7 +11,7 @@ namespace ClientApp
 
         protected string destination;
 
-        protected int fee = 100;
+        protected string fee;
 
         public void SetOrigin(String origin)
         {
@@ -29,7 +29,11 @@ namespace ClientApp
         {
             return this.destination;
         }
-        public int PayFee()
+        public void SetFee(String fee)
+        {
+            this.fee = fee;
+        }
+        public String PayFee()
         {
             return this.fee;
         }

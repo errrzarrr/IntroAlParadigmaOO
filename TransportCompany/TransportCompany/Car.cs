@@ -7,17 +7,17 @@ namespace ClientApp
 {
     class Car : Vehicle
     {
-      public Car()
+      public void SetWheels(int wheels)
       {
-        this.wheels = 4;
+          this.wheels = wheels;
+      }
+      public int GetWheels()
+      {
+          return this.wheels;
       }
       public override void StartEngine()
       {
         Console.WriteLine($"Starting Engine for Car with {wheels} wheels.");
-      }
-      internal void SetWheels(int numOfWheels)
-      {
-        this.wheels = numOfWheels;
       }
       public override void StopEngine()
       {

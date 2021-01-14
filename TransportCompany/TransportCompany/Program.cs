@@ -8,32 +8,56 @@ namespace ClientApp
 		{
 			RunConsoleApp();
 		}
-
 		private static void RunConsoleApp()
 		{
-			Console.WriteLine("Hello!, welcome to our Transport Company!");
-			Passenger tourist = new Passenger();
-			TaxiDriver uber = new TaxiDriver();
-			tourist.SetOrigin("Downtown Center");
-			tourist.Talk("*Tourist: Hi, I'm a turist, I need an uber.");
-			uber.GetPickupPoint(tourist.GetOrigin());
-			tourist.Talk("*Tourist: Wow, that was fast, I'll get in the car.");
-			tourist.SetDestination("Galería 360");
-			uber.GoToDestination(tourist.GetOrigin());
-			uber.TellFee();
-			uber.GetPassengerFee(tourist.PayFee());
+			string scenario;
+			Console.WriteLine("-What scenario would you like to run?");
+			Console.WriteLine("1: Passenger | 2: Pilot | 3: FreightDriver");
+			scenario = Console.ReadLine();
+			Console.Clear();
+			Console.WriteLine("-Welcome to our Transport Company!");
 
-			//Console.WriteLine("Ready to take you to your destination at {passengerDestination}");B
-			Car myCar = new Car();
-			// myCar.SetWheels(3);
-			// Driver driver = new Driver();
-			// driver.SetName("Carlos");
-			// driver.Talk();
-			// driver.SetCar(myCar);
-			// driver.DriveVehicle();
-			// Your code here...
-			Console.WriteLine("Thank you for using our services. Press any key to exit...");
-			Console.ReadLine();
+			if (scenario == "1")
+			{
+				Passenger tourist = new Passenger();
+				TaxiDriver uber = new TaxiDriver();
+				Car taxiCar = new Car();
+				uber.SetLicense("Taxi-E1G47");
+				uber.SetVehicle(taxiCar);
+				// taxiCar.StartEngine(); // this must not be allowed
+
+				Console.WriteLine("-Passenger, please enter your name:");
+				tourist.SetName(Console.ReadLine());
+				tourist.Talk();
+				Console.WriteLine($"-Hello {tourist.GetName()}, where should we pick you up?");
+				tourist.SetOrigin(Console.ReadLine());
+
+				uber.GetPickupPoint(tourist.GetOrigin());
+				tourist.SetDestination(Console.ReadLine());
+				uber.GoToDestination(tourist.GetDestination());
+
+				uber.TellFee();
+				Console.WriteLine("-Please enter your payment amount:");
+				tourist.SetFee(Console.ReadLine());
+				uber.GetPassengerFee(tourist.PayFee());
+				Console.WriteLine("--Thank you for using our services. Press any key to exit...");
+			}
+			else if (scenario == "2")
+			{
+				Pilot pilot = new Pilot();
+
+				Console.WriteLine("-Pilot, please enter your name:");
+				pilot.SetName(Console.ReadLine());
+				pilot.Talk();
+				Console.WriteLine($"-Hello {pilot.GetName()}, license number please?");
+				pilot.SetLicense(Console.ReadLine());
+				Console.WriteLine($"-Thank you, please enter your DOB as YYYY-MM-DD");
+				pilot.SetDateOfBirth(DateTime.Parse(Console.ReadLine()));
+				Console.WriteLine($"-Thank you, please enter your salary as primitive number");
+				pilot.SetSalary(int.Parse(Console.ReadLine()));
+				pilot.CheckValidPilot();
+			}
+			Console.ReadKey();
 		}
 	}
 }

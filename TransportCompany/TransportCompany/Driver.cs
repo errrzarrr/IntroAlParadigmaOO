@@ -7,16 +7,33 @@ namespace ClientApp
 	class Driver : Person, IDriver
 	{
 		private string licenseId;
-		private Car car;
+		private Vehicle vehicle;
+
+		public void SetLicense(String licenseId)
+		{
+				this.licenseId = licenseId;
+		}
+		public String GetLicense()
+		{
+				return this.licenseId;
+		}
+		public void SetVehicle(Vehicle vehicle)
+		{
+			this.vehicle = vehicle;
+		}
+		public Vehicle GetVehicle()
+		{
+				return this.vehicle;
+		}
+		private bool CanDriveThisVehicle()
+		{
+			return (licenseId != null);
+		}
 		public void DriveVehicle()
 		{
-			car.StartEngine();
-			Console.WriteLine("I'm a driver, let's drive");
+			if (CanDriveThisVehicle()){
+				Console.WriteLine("Driving vehicle as driver");
+			}
 		}
-		public void SetCar(Car car)
-		{
-			this.car = car;
-		}
-
 	}
 }
