@@ -6,6 +6,7 @@ namespace ClientApp
 {
 	class Driver : IDriver
 	{
+       private Vehicle Vehicle;
 
 	}
 }
