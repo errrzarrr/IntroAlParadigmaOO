@@ -12,6 +12,7 @@ namespace ClientApp
 		private static void RunConsoleApp()
 		{
 			Console.WriteLine("I am learning");
+			Console.WriteLine("para asegurarme de que se estan guardando los commits");
 
 			  
 
