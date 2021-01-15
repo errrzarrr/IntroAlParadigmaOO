@@ -6,9 +6,8 @@ namespace ClientApp
 {
 	abstract class Vehicle
 	{
-		protected int wheels;
-
-		internal abstract void StartpEngine();
+		private int Wheels;
+        internal abstract void StartpEngine();
 		internal abstract void StopEngine();
 	}
 }
