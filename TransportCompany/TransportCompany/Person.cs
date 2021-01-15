@@ -9,19 +9,22 @@ namespace ClientApp
         protected string _name = "Nobody";
         protected DateTime _dateOfBirth;
 
-        public void SetName(String name)
+        public void SetName(string name)
         {
-            if (int.TryParse(name, out _)) {
-                Console.WriteLine("Name cannot be numbers");
+            if (int.TryParse(name, out _) || name == "")
+            {
+                Console.WriteLine("Please enter a valid name");
             } else this._name = name;
         }
-        public String GetName()
+        public string GetName()
         {
             return this._name;
         }
 
-        public void SetDateOfBirth(DateTime dateOfBirth)
+        public void SetDateOfBirth(int year, int month, int day)
         {
+            DateTime dateOfBirth = new DateTime(year, month, day);
+
             if (dateOfBirth <= DateTime.Today)
             {
                 this._dateOfBirth = dateOfBirth;                

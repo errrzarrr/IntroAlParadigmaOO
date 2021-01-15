@@ -4,37 +4,53 @@ using System.Text;
 
 namespace ClientApp
 {
-    class Driver : IDriver
+    class Driver : Person, IDriver
     {
-        private String licenseId;
-        private Vehicle vehicle;
+        protected string _licenseId;
+        protected Vehicle _vehicle;
 
         public void DriveVehicle()
         {
             Console.WriteLine("Driving...");
         }
 
-        public void SetLicense(String licenseId)
+        public void SetLicense(string licenseId)
         {
-            this.licenseId = licenseId;
+            if(licenseId == "")
+            {
+                Console.WriteLine("Please enter a valid driver's license ID"); 
+            } else this._licenseId = licenseId;
         }
-        public String GetLicense()
+        public string GetLicense()
         {
-            return this.licenseId;
+            return this._licenseId;
         }
 
         public void SetVehicle(Vehicle vehicle)
         {
-            this.vehicle = vehicle;
+            this._vehicle = vehicle;
         }
         public Vehicle GetVehicle()
         {
-            return this.vehicle;
+            return this._vehicle;
         }
 
+        //TODO Method logic pending
         private bool CanDriveThisVehicle()
         {
+            this._vehicle.GetType();
             return true;
+        }
+
+        public void ObtainDriverLicense(Person person)
+        {
+            int age = DateTime.Today.Year - person.GetDateOfBirth().Year;
+
+            if (age < 15)
+            {
+                Console.WriteLine("You are not old enough to get a driver's license");
+            }
+            else this._licenseId = $"{person.GetName()}{person.GetDateOfBirth().Year}{person.GetDateOfBirth().Month}{person.GetDateOfBirth().Day}";
         }
     }
 }
