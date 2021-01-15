@@ -8,6 +8,16 @@ namespace ClientApp
     {
         protected string _licenseId;
         protected Vehicle _vehicle;
+        protected Person _person;
+
+        public Driver(Person person)
+        {
+            this._person = person;
+        }
+        public Person GetPerson()
+        {
+            return this._person;
+        }
 
         public void DriveVehicle()
         {
@@ -42,15 +52,15 @@ namespace ClientApp
             return true;
         }
 
-        public void ObtainDriverLicense(Person person)
+        public virtual void ObtainDriverLicense()
         {
-            int age = DateTime.Today.Year - person.GetDateOfBirth().Year;
+            int age = DateTime.Today.Year - this._person.GetDateOfBirth().Year;
 
             if (age < 15)
             {
                 Console.WriteLine("You are not old enough to get a driver's license");
             }
-            else this._licenseId = $"{person.GetName()}{person.GetDateOfBirth().Year}{person.GetDateOfBirth().Month}{person.GetDateOfBirth().Day}";
+            else this._licenseId = $"{this._person.GetName()}{this._person.GetDateOfBirth().Year}{this._person.GetDateOfBirth().Month}{this._person.GetDateOfBirth().Day}";
         }
     }
 }

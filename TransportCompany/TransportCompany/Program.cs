@@ -17,8 +17,8 @@ namespace ClientApp
 			frank.SetName("Frank Montero");
 			frank.SetDateOfBirth(1987, 9, 10);
 
-			Driver frankDriver = new Driver();
-			frankDriver.ObtainDriverLicense(frank);
+			Driver frankDriver = new Driver(frank);
+			frankDriver.ObtainDriverLicense();
 			Console.WriteLine(frank.GetDateOfBirth().ToShortDateString());
 
 			Console.WriteLine("Thank you for using our services. Press any key to exit...");

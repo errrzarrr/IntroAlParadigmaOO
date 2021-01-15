@@ -5,9 +5,13 @@ using System.Text;
 namespace ClientApp
 {
     class TaxyDriver : Driver
-    {
+    {        
         private double _fee;
 
+        public TaxyDriver(Person person) : base(person)
+        {
+            //
+        }
         public void SetFee(double fee)
         {
             if (fee < 0)
