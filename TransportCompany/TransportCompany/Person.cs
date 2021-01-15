@@ -4,40 +4,36 @@ using System.Text;
 
 namespace ClientApp
 {
-	class Person
+	 abstract class Person
 	{
-		string _Name;
-		public string Name
-		{
-			get
+		private string Name;
+		
+		
+			public string GetName()
 			{
-				return _Name;
+				return Name;
 			}
-			set
+			public void SetName(string name)
 			{
-				_Name = value;
+			Name = name;
 
 			}
-		}
-		DateTime _DateOfBirth;
-		public DateTime DateOfBirth
-		{
-			get
+		
+		private DateTime _DateOfBirth;
+		
+			public DateTime GetDateOfBrith()
 			{
 				return _DateOfBirth;
 			}
-			set
+		public void SetDateOfBirth(DateTime dateofbirth)
 			{
-				_DateOfBirth = value;
+				_DateOfBirth = dateofbirth;
 
 			}
-		}
 
 
-		protected void Talk()
-		{
-			Console.WriteLine("I can talk :)");
-		}
+
+		internal abstract void Talk();
 
 		
 	}

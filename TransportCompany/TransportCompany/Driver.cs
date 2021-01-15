@@ -5,23 +5,48 @@ using System.Text;
 namespace ClientApp
 {
 
-	class Driver : IDriver
-	{
-		 void IDriver.DriveVehicle()
+    class Driver: Person, IDriver
+    {
+        void IDriver.DriveVehicle()
         {
-			Console.WriteLine("i am driving");
+            Console.WriteLine($"{this} driving");
         }
-
-
-		private string licenseID;
-        public string LicenseID { get => licenseID; set => licenseID = value; }
 
         private Vehicle Vehicle;
-        internal Vehicle Vehicle1 { get => Vehicle; set => Vehicle = value; }
+        private string LicenseID;
+        protected int Fee;
+        
 
-        public bool CanDriveThisVehicle( Vehicle vehicle)
+        public string GetLicenseID()
         {
-            return  true ;
+            return LicenseID;
         }
+
+        public void SetLicenseID(string licenseID)
+        {
+            LicenseID = licenseID;
+        }
+
+        public Vehicle GetVehicle()
+        {
+            return Vehicle; 
+        } 
+        public void SetVehicle(Vehicle vehicle )
+        {
+            Vehicle = vehicle ; 
+        }
+
+        public bool CanDriveThisVehicle(Vehicle vehicle)
+        {
+            return true;
+        }
+
+        internal override void Talk()
+        {
+            Console.WriteLine("Where do you want to go ?");
+        }
+
     }
+
+
 }
