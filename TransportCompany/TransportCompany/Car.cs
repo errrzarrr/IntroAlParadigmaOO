@@ -7,9 +7,9 @@ namespace ClientApp
     class Car : Vehicle
     {
 
-        public Car(int wheels)
+        public Car()
         {
-            this.wheels = wheels;
+            this.wheels = 4;
         }
 
         internal override void StartEngine()

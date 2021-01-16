@@ -13,10 +13,12 @@ namespace ClientApp
         protected int minTax = 100;
         protected int maxTax = 1000;
 
-        public TaxiDriver(Passenger passenger, Car car)
+        public TaxiDriver(DateTime dateOfBirth, Passenger passenger, Car car, string licenseID)
         {
+            SetDateOfBirth(dateOfBirth);
             this.passenger = passenger;
             SetVehicle(car);
+            if(DriverIsLegal(18)) SetLicense(licenseID);
         }
 
         public override void Talk()

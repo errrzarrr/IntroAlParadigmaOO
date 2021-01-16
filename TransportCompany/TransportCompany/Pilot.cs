@@ -8,15 +8,17 @@ namespace ClientApp
     class Pilot : Driver
     {
 
-        public Pilot()
+        public Pilot(DateTime dateOfBirth, Car car, string licenseId)
         {
-            SetLicense("Pro-");
+            SetDateOfBirth(dateOfBirth);
+            if(DriverIsLegal(22)) SetLicense($"Pro-{licenseId}");
+            else Console.WriteLine("Pilot can't have a license.");
         }
+
 
         public override void SetLicense(string licenseId)
         {
-            string license = GetLicense() + licenseId;
-            base.SetLicense(license);
+            SetLicense(licenseId);
         }
 
     }

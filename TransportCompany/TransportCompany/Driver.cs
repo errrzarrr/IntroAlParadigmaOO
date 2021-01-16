@@ -44,5 +44,10 @@ namespace ClientApp
 
 		}
 
+		protected bool DriverIsLegal(int age)
+        {
+			return DateTime.Now.Year - GetDateOfBirth().Year >= age ? true : false;
+        }
+
 	}
 }
