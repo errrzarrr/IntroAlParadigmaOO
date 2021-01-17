@@ -8,17 +8,15 @@ namespace ClientApp
     {
         protected string _licenseId;
         protected Vehicle _vehicle;
-        protected Person _person;
 
+        public Driver() { }
+        
         public Driver(Person person)
         {
-            this._person = person;
+            this.SetName(person.GetName());
+            this.SetDateOfBirth(person.GetDateOfBirth());
         }
-        public Person GetPerson()
-        {
-            return this._person;
-        }
-
+       
         public void DriveVehicle()
         {
             Console.WriteLine("Driving...");
@@ -38,29 +36,35 @@ namespace ClientApp
 
         public void SetVehicle(Vehicle vehicle)
         {
-            this._vehicle = vehicle;
+            if (vehicle is Car)
+                this._vehicle = vehicle;
         }
         public Vehicle GetVehicle()
         {
             return this._vehicle;
         }
-
-        //TODO Method logic pending
-        private bool CanDriveThisVehicle()
+                
+        private bool CanDriveThisVehicle(Vehicle vehicle)
         {
-            this._vehicle.GetType();
-            return true;
+            bool isAbleTo = false;
+            
+            if (vehicle is Car)
+            {
+                isAbleTo = true;
+            }
+            
+            return isAbleTo;
         }
 
         public virtual void ObtainDriverLicense()
         {
-            int age = DateTime.Today.Year - this._person.GetDateOfBirth().Year;
+            int age = DateTime.Today.Year - this.GetDateOfBirth().Year;
 
-            if (age < 15)
+            if (age < 18)
             {
                 Console.WriteLine("You are not old enough to get a driver's license");
             }
-            else this._licenseId = $"{this._person.GetName()}{this._person.GetDateOfBirth().Year}{this._person.GetDateOfBirth().Month}{this._person.GetDateOfBirth().Day}";
+            else this._licenseId = $"{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}";
         }
     }
 }

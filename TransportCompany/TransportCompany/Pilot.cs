@@ -9,7 +9,9 @@ namespace ClientApp
         private double _salary;
         private int _maxDrivingSpeed = 0;
 
-        public Pilot(Person person) : base(person)
+        public Pilot() { }
+
+        public Pilot(Driver driver) : base(driver)
         {
             Console.WriteLine("Please indicate your max driving speed");
             this.SetMaxDrivingSpeed(int.Parse(Console.ReadLine()));
@@ -43,12 +45,12 @@ namespace ClientApp
 
         public override void ObtainDriverLicense()
         {
-            int age = DateTime.Today.Year - this._person.GetDateOfBirth().Year;
+            int age = DateTime.Today.Year - this.GetDateOfBirth().Year;
                         
             if (age < 22)
             {
                 Console.WriteLine("You are not old enough to get a pilot driver's license");
-            } else this._licenseId = $"{this._person.GetName()}{this._person.GetDateOfBirth().Year}{this._person.GetDateOfBirth().Month}{this._person.GetDateOfBirth().Day}";
+            } else this._licenseId = $"Pro-{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}";
         }
     }
 }

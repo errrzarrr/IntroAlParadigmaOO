@@ -8,12 +8,12 @@ namespace ClientApp
     {
         internal override void StartpEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Starting car");
         }
 
         internal override void StopEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Turning car off"); ;
         }
 
         public override void SetWheels(int wheels)
