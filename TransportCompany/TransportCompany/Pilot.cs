@@ -18,7 +18,7 @@ namespace ClientApp
 
     public bool ValidLicense()
     {
-        return (this.GetLicense().Substring(0, 4) == "Pro-");
+        return (this.GetLicense().ToLower().Substring(0, 4) == "pro-");
     }
 
     public bool ValidAge()
@@ -39,7 +39,7 @@ namespace ClientApp
             }
             else if (!ValidLicense())
             {
-              Console.WriteLine("Invalid license, you need a professional license to be a pilit.");
+              Console.WriteLine("Invalid license, you need a professional license to be a pilot.");
             }
             else if (!ValidAge())
             {
