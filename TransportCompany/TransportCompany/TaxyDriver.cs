@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace ClientApp
 {
@@ -8,10 +9,12 @@ namespace ClientApp
     {        
         private double _fee;
 
-        public TaxyDriver(Person person) : base(person)
+        public TaxyDriver() { }
+        public TaxyDriver(Driver driver) : base(driver)
         {
             //
         }
+
         public void SetFee(double fee)
         {
             if (fee < 0)
@@ -23,14 +26,24 @@ namespace ClientApp
         {
             return this._fee;
         }
-
-        //TODO Control how fast the instructions run
+        
         public void DrivePassenger(Passenger passenger)
         {
-            Console.WriteLine($"Taxy driver {this._name} will drive {passenger.GetName()} from {passenger.GetOrigin()} to {passenger.GetDestination()}");
+            Console.WriteLine($"Taxy driver {this._name} will drive {passenger.GetName()} from {passenger.GetOrigin()} to {passenger.GetDestination()}\n");
+            Thread.Sleep(1000);
+
+            this._vehicle.StartpEngine();
+            Thread.Sleep(1000);
             this.DriveVehicle();
+            Thread.Sleep(4000);
+
             Console.WriteLine($"Arrived at {passenger.GetDestination()}");
+            Thread.Sleep(1000);
             Console.WriteLine($"Passenger {passenger.GetName()} is going to be ${this._fee} please");
+            Thread.Sleep(4000);
+
+            this._vehicle.StopEngine();
+            Thread.Sleep(2000);
         }
     }
 }

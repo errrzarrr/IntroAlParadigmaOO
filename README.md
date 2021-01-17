@@ -32,9 +32,3 @@
 
 
 ![](./ClassDiagram.png)
-
-
-## Diagrama de clases Actualizado
-
-
-![](./ClassDiagram2.png)

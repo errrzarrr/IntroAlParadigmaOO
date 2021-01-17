@@ -30,6 +30,14 @@ namespace ClientApp
                 this._dateOfBirth = dateOfBirth;                
             } else Console.WriteLine("Date of birth cannot be a future date");
         }
+        public void SetDateOfBirth(DateTime dateOfBirth)
+        {            
+            if (dateOfBirth <= DateTime.Today)
+            {
+                this._dateOfBirth = dateOfBirth;
+            }
+            else Console.WriteLine("Date of birth cannot be a future date");
+        }
         public DateTime GetDateOfBirth()
         {
             return this._dateOfBirth;

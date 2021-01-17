@@ -8,7 +8,6 @@ namespace ClientApp
     {
         protected string _origin;
         protected string _destination;
-        private TaxyDriver _taxyDriver;
 
         public void SetOrigin(string origin)
         {
