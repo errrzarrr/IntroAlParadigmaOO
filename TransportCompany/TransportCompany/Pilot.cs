@@ -12,7 +12,6 @@ namespace ClientApp
         {
             SetDateOfBirth(dateOfBirth);
             if(DriverIsLegal(22)) SetLicense($"Pro-{licenseId}");
-            else Console.WriteLine("Pilot can't have a license.");
         }
 
 

@@ -30,38 +30,33 @@ namespace ClientApp
         {
 
             int timeInMS = 2000;
-            if (CanDriveThisVechicle())
-            {
-                Talk();
+            Talk();
 
-                Thread.Sleep(timeInMS);
-                GetVehicle().StartEngine();
+            Thread.Sleep(timeInMS);
+            GetVehicle().StartEngine();
 
-                Thread.Sleep(timeInMS);
-                Console.WriteLine("TaxiDriver is going to your location, be ready for go out... Press any key to indicate that you are ready.");
-                Console.ReadKey();
-                Thread.Sleep(timeInMS);
+            Thread.Sleep(timeInMS);
+            Console.WriteLine("\nTaxiDriver is going to your location, be ready for go out... Press any key to indicate that you are ready.");
+            Console.ReadKey();
+            Thread.Sleep(timeInMS);
 
-                Console.Clear();
-                Thread.Sleep(timeInMS - 500);
-                PickUpPassenger();
+            Console.Clear();
+            Thread.Sleep(timeInMS - 500);
+            PickUpPassenger();
 
-                Thread.Sleep(timeInMS);
-                Console.Clear();
-                CarryThePassanger();
+            Thread.Sleep(timeInMS);
+            Console.Clear();
+            CarryThePassanger();
 
-                Thread.Sleep(timeInMS + 1000);
-                Console.Clear();
-                ArrivingToDestiny();
+            Thread.Sleep(timeInMS + 1000);
+            Console.Clear();
+            ArrivingToDestiny();
 
-                Thread.Sleep(timeInMS);
-                GetVehicle().StopEngine();
+            Thread.Sleep(timeInMS);
+            GetVehicle().StopEngine();
 
-                Thread.Sleep(timeInMS - 1000);
-                ChargeToPassenger();
-            }
-            else
-                Console.WriteLine("Driver doesn't have license, so he can't drive!");
+            Thread.Sleep(timeInMS - 1000);
+            ChargeToPassenger();
 
         }
 
@@ -78,12 +73,6 @@ namespace ClientApp
         public void ArrivingToDestiny()
         {
             Console.WriteLine($"Arriving to {passenger.GetDestiny()}...");
-        }
-
-        private bool CanDriveThisVechicle()
-        {
-            if (string.IsNullOrEmpty(GetLicense())) return false;
-            else return true;
         }
 
         public void ChargeToPassenger()

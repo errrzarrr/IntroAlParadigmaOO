@@ -7,7 +7,7 @@ namespace ClientApp
 	{
 
 		static readonly Car car1 = new Car();
-		static readonly Truck truck = new Truck(4);
+		static readonly Truck truck = new Truck(4, 20);
 		static readonly Passenger passenger1 = new Passenger();
 		static readonly TaxiDriver taxiDriver = new TaxiDriver(DateTime.Parse("2004/6/1"), passenger1, car1, "1234");
 		static readonly Pilot pilot = new Pilot(DateTime.Parse("2008/6/1"), car1, "1234");
@@ -58,7 +58,13 @@ namespace ClientApp
 					case 1:
 
 						if (string.IsNullOrEmpty(taxiDriver.GetLicense()))
+                        {
+							Console.BackgroundColor = ConsoleColor.Red;
+							Console.WriteLine("Taxi Driver doesn't have license.\n");
+							Console.BackgroundColor = ConsoleColor.Black;
+							RenderMenu(input, array);
 							break;
+						}
 						else
 						{
 							passenger.SetOrigin(GetUserLocation());
@@ -76,23 +82,65 @@ namespace ClientApp
 
 					case 2:
 
-						Console.WriteLine(input);
+						if (string.IsNullOrEmpty(pilot.GetLicense()))
+						{
+							Console.BackgroundColor = ConsoleColor.Red;
+							Console.WriteLine("Pilot doesn't have license.\n");
+							Console.BackgroundColor = ConsoleColor.Black;
+							RenderMenu(input, array);
+							break;
+						}
+						else
+						{
+							passenger.SetOrigin(GetUserLocation());
+							Loading();
+							Console.Clear();
 
-						break;
+							passenger.SetDestiny(GetUserDestiny());
+							Loading();
+							Console.Clear();
+
+							taxiDriver.DriveVehicle();
+
+							break;
+						}
 
 					case 3:
 
-						Console.WriteLine(input);
+						if (string.IsNullOrEmpty(freight.GetLicense()))
+						{
+							Console.BackgroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Freight Driver doesn't have license.\n");
+							Console.BackgroundColor = ConsoleColor.Black;
+							RenderMenu(input, array);
+							break;
+						}
+						else
+						{
+							passenger.SetOrigin(GetUserLocation());
+							Loading();
+							Console.Clear();
 
-						break;
+							passenger.SetDestiny(GetUserDestiny());
+							Loading();
+							Console.Clear();
+
+							taxiDriver.DriveVehicle();
+
+							break;
+						}
 
 					case 4:
 
-						Console.WriteLine(input);
+						Console.WriteLine("Thank you for using our services.");
+						Thread.Sleep(1500);
+						Environment.Exit(0);
 
 						break;
 
 					default:
+
+						Console.BackgroundColor = ConsoleColor.Red;
 
 						Console.WriteLine("You inserted an invalid option... Try again.");
 

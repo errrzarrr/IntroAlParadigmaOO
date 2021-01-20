@@ -40,7 +40,7 @@ namespace ClientApp
 			if (CanDriveThisVechicle())
 				Console.WriteLine("Driving Vehicle");
 			else
-				Console.WriteLine("Driver doesn't have license, so he can't drive!");
+				Console.WriteLine($" {this} doesn't have license, so he can't drive!");
 
 		}
 
