@@ -7,9 +7,10 @@ namespace ClientApp
 
     class Pilot : Driver
     {
-
+        private Car car;
         public Pilot(DateTime dateOfBirth, Car car, string licenseId)
         {
+            this.car = car;
             SetDateOfBirth(dateOfBirth);
 
             if(ValidAge(22)) 

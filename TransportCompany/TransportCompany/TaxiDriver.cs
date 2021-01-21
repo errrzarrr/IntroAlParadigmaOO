@@ -9,6 +9,7 @@ namespace ClientApp
     {
 
         protected Passenger passenger;
+        private Car car;
         protected int fee;
         protected int minTax = 100;
         protected int maxTax = 1000;
@@ -17,7 +18,7 @@ namespace ClientApp
         {
             SetDateOfBirth(dateOfBirth);
             this.passenger = passenger;
-            SetVehicle(car);
+            this.car = car;
 
             if(ValidAge(18)) 
                 SetLicense(licenseID);
@@ -35,7 +36,7 @@ namespace ClientApp
             Talk();
 
             Thread.Sleep(timeInMS);
-            GetVehicle().StartEngine();
+            car.StartEngine();
 
             Thread.Sleep(timeInMS);
             Console.WriteLine("\nTaxiDriver is going to your location, be ready for go out... Press any key to indicate that you are ready.");
@@ -55,7 +56,7 @@ namespace ClientApp
             ArrivingToDestiny();
 
             Thread.Sleep(timeInMS);
-            GetVehicle().StopEngine();
+            car.StopEngine();
 
             Thread.Sleep(timeInMS - 1000);
             ChargeToPassenger();

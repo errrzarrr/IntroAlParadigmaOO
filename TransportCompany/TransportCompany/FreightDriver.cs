@@ -6,7 +6,7 @@ namespace ClientApp
 {
     class FreightDriver : Driver
     {
-
+        protected Truck truck;
         protected int fee;
         protected int minTax = 100;
         protected int maxTax = 1000;
@@ -14,7 +14,7 @@ namespace ClientApp
         public FreightDriver(DateTime dateOfBirth, Truck truck, string licenseId)
         {
             SetDateOfBirth(dateOfBirth);
-            SetVehicle(truck);
+            this.truck = truck;
 
             if (ValidAge(20)) 
                 SetLicense($"Heavy-{licenseId}");
@@ -25,6 +25,11 @@ namespace ClientApp
         {
             SetLicense(licenseId);
             
+        }
+
+        public void CarryFreight()
+        {
+            Console.WriteLine($"Carrying {truck.GetFreight()}...");
         }
 
     }

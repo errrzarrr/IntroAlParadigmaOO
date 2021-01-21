@@ -29,9 +29,14 @@ namespace ClientApp
             Console.WriteLine("Truck engine is stopping...");
         }
 
-        protected void SetFreight(int freight)
+        public void SetFreight(int freight)
         {
             this.freight = freight;
+        }
+
+        public int GetFreight()
+        {
+            return freight;
         }
     }
 }
