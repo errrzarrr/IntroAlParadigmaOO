@@ -15,7 +15,9 @@ namespace ClientApp
         {
             SetDateOfBirth(dateOfBirth);
             SetVehicle(truck);
-            if (DriverIsLegal(20)) SetLicense($"Heavy-{licenseId}");
+
+            if (ValidAge(20)) 
+                SetLicense($"Heavy-{licenseId}");
 
         }
 

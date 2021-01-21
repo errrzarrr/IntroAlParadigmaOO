@@ -18,7 +18,9 @@ namespace ClientApp
             SetDateOfBirth(dateOfBirth);
             this.passenger = passenger;
             SetVehicle(car);
-            if(DriverIsLegal(18)) SetLicense(licenseID);
+
+            if(ValidAge(18)) 
+                SetLicense(licenseID);
         }
 
         public override void Talk()

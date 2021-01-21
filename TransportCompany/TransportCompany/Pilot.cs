@@ -11,7 +11,9 @@ namespace ClientApp
         public Pilot(DateTime dateOfBirth, Car car, string licenseId)
         {
             SetDateOfBirth(dateOfBirth);
-            if(DriverIsLegal(22)) SetLicense($"Pro-{licenseId}");
+
+            if(ValidAge(22)) 
+                SetLicense($"Pro-{licenseId}");
         }
 
 
