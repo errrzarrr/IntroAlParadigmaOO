@@ -4,54 +4,28 @@ using System.Text;
 
 namespace ClientApp
 {
-    class Car : Vehicle
+    public class Car : Vehicle
     {
-        internal override void StartpEngine()
+        protected internal override void StartEngine()
         {
-            Console.WriteLine("Starting car");
+            Console.WriteLine("Starting car on");
         }
 
-        internal override void StopEngine()
+        protected internal override void StopEngine()
         {
             Console.WriteLine("Turning car off"); ;
         }
 
         public override void SetWheels(int wheels)
         {
-            
-            this._wheels = wheels;
+            if (wheels < 3)
+            {
+                Console.WriteLine("Car needs at least 3 wheels");
+            } else this.wheels = wheels;
         }
         public override int GetWheels()
         {
-            return this._wheels;
-        }
-
-        public override void SetModel(string model)
-        {
-            if (model == "")
-            {
-                Console.WriteLine("Please enter a valid vehicle model");
-            }
-            else this._model = model;      
-        }
-
-        public override string GetModel()
-        {
-            return this._model;
-        }
-
-        public override void SetBrand(string brand)
-        {
-            if (brand == "")
-            {
-                Console.WriteLine("Please enter a valid vehicle brand");
-            }
-            else this._brand = brand;
-        }
-
-        public override string GetBrand()
-        {
-            return this._brand;
+            return this.wheels;
         }
     }
 }
