@@ -4,60 +4,38 @@ using System.Text;
 
 namespace ClientApp
 {
-    class Freight : Vehicle
+    public class Freight : Vehicle
     {
-        private int _loadCapacityTonne;
+        private int loadCapacityTon;
         
-        public void SetLoadCapacity(int loadCapacityTonne)
+        public void SetLoadCapacity(int loadCapacityTon)
         {
-            if (loadCapacityTonne > 0)
+            if (loadCapacityTon > 0)
             {
-                this._loadCapacityTonne = loadCapacityTonne; 
+                this.loadCapacityTon = loadCapacityTon; 
             } else Console.WriteLine("The load capacity of the freight must be greater than 0 metric tons");
-        }
-
-        public override string GetBrand()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetModel()
-        {
-            throw new NotImplementedException();
-        }
+        }             
 
         public override int GetWheels()
         {
             throw new NotImplementedException();
         }
-
-        public override void SetBrand(string brand)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetModel(string model)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SetWheels(int wheels)
         {
-            if (wheels < 8 && wheels > 10)
+            if (wheels == 8 || wheels == 10)
             {
-                Console.WriteLine("Freights must have from 8 to 10 wheels");
+                Console.WriteLine("Freights must have 8 or 10 wheels");
             }
-            else this._wheels = wheels;
+            else this.wheels = wheels;
         }
 
-        internal override void StartpEngine()
+        protected internal override void StartEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Starting freight on");
         }
-
-        internal override void StopEngine()
+        protected internal override void StopEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Turning freight off");
         }
     }
 }
