@@ -4,46 +4,29 @@ using System.Text;
 
 namespace ClientApp
 {
-    class Truck : Vehicle
+    public class Truck : Vehicle
     {
-        public override string GetBrand()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetModel()
-        {
-            throw new NotImplementedException();
-        }
-
         public override int GetWheels()
         {
-            throw new NotImplementedException();
+            return this.wheels;
         }
-
-        public override void SetBrand(string brand)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetModel(string model)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SetWheels(int wheels)
         {
-            throw new NotImplementedException();
+            if (wheels < 6)
+            {
+                Console.WriteLine("Truck needs at least 6 wheels");
+            }
+            else this.wheels = wheels;
         }
 
-        internal override void StartpEngine()
+        protected internal override void StartEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Starting truck on");
         }
 
-        internal override void StopEngine()
+        protected internal override void StopEngine()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Turning truck off");
         }
     }
 }
