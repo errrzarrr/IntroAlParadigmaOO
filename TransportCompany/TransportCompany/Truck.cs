@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class Truck : Vehicle
-    {
-        public override int GetWheels()
-        {
-            return this.wheels;
-        }
+    {        
         public override void SetWheels(int wheels)
         {
             if (wheels < 6)

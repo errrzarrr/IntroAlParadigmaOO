@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
 	abstract public class Vehicle
 	{
@@ -12,7 +12,10 @@ namespace ClientApp
 		protected internal abstract void StopEngine();
 
 		public abstract void SetWheels(int wheels);
-		public abstract int GetWheels();
+		public int GetWheels()
+        {
+			return this.wheels;
+        }
 	}
 }
 
