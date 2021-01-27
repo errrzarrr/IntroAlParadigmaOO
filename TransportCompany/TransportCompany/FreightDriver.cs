@@ -2,26 +2,47 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
-    class FreightDriver : Driver
+    public class FreightDriver : Driver
     {
-        public FreightDriver() { }
+        protected double fee;
 
-        public FreightDriver(Driver driver) : base(driver)
+        public void SetFee(double fee)
         {
-            //
-        }
-
-        public override void ObtainDriverLicense()
-        {
-            int age = DateTime.Today.Year - this.GetDateOfBirth().Year;
-
-            if (age < 20)
+            if (fee < 0)
             {
-                Console.WriteLine("You are not old enough to get a truck driver's license");
+                Console.WriteLine("You must provide a positive amount");
             }
-            else this._licenseId = $"Heavy-{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}";
+            else this.fee = fee;
         }
+        public double GetFee()
+        {
+            return this.fee;
+        }
+
+        public override void SetLicense(string licenseId)
+        {
+            if (this.age < 20)
+            {
+                Console.WriteLine("You are not old enough to get a Freight/Truck's driver license");
+            }            
+            else if ((licenseId == "") || (licenseId.Substring(0, 6) != "Heavy-"))
+            {
+                Console.WriteLine("This is not a valid Freight/Truck's license ID");
+            }
+            else this.licenseId = licenseId;
+        }
+
+        protected override bool CanDriveThisVehicle()
+        {
+            return ((vehicle is Truck) || (vehicle is Freight));
+        }
+
+        public override string ObtainDriverLicense()
+        {
+            this.SetLicense($"Heavy-{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}");
+            return this.licenseId;
+        }            
     }
 }

@@ -2,41 +2,41 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
-    class Passenger : Person
+    public class Passenger : Person
     {
-        protected string _origin;
-        protected string _destination;
+        protected string origin;
+        protected string destination;
 
         public void SetOrigin(string origin)
         {
             if (origin != "")
             {
-                this._origin = origin;
-            } else Console.WriteLine("At least a word must be entered for the origin");
+                this.origin = origin;
+            } else Console.WriteLine("Please enter a valid pick up location");
         }
         public string GetOrigin()
         {
-            return this._origin;            
+            return this.origin;            
         }
 
         public void SetDestination(string destination)
         {
             if (destination != "")
             {
-                this._destination = destination;
+                this.destination = destination;
             }
-            else Console.WriteLine("At least a word must be entered for the destination");
+            else Console.WriteLine("Please enter a valid destination");
         }
         public string GetDestination()
         {
-            return this._origin;
+            return this.destination;
         }
 
         public void PayShuttleFee (TaxyDriver taxyDriver)
         {
-            Console.WriteLine($"{this._name} paid {taxyDriver.GetFee()} to {taxyDriver.GetName()}");
+            Console.WriteLine($"{this.name} pays {taxyDriver.GetFee()} to {taxyDriver.GetName()}");
         }
     }
 }

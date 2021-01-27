@@ -1,70 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
-    class Driver : Person, IDriver
+    public class Driver : Person, IDriver
     {
-        protected string _licenseId;
-        protected Vehicle _vehicle;
-
-        public Driver() { }
+        protected string licenseId;
+        protected Vehicle vehicle;
         
-        public Driver(Person person)
+        public virtual void SetLicense(string licenseId)
         {
-            this.SetName(person.GetName());
-            this.SetDateOfBirth(person.GetDateOfBirth());
-        }
-       
-        public void DriveVehicle()
-        {
-            Console.WriteLine("Driving...");
-        }
-
-        public void SetLicense(string licenseId)
-        {
-            if(licenseId == "")
+            if (this.age < 18)
+            {
+                Console.WriteLine("You are not old enough to get a driver's license");
+            }
+            else if (licenseId == "")
             {
                 Console.WriteLine("Please enter a valid driver's license ID"); 
-            } else this._licenseId = licenseId;
+            } else this.licenseId = licenseId;
         }
+     
         public string GetLicense()
         {
-            return this._licenseId;
+            return (licenseId != "") ? this.licenseId : "No driver's license yet";
         }
 
         public void SetVehicle(Vehicle vehicle)
         {
-            if (vehicle is Car)
-                this._vehicle = vehicle;
+            this.vehicle = vehicle;
         }
         public Vehicle GetVehicle()
         {
-            return this._vehicle;
+            return this.vehicle;
         }
                 
-        private bool CanDriveThisVehicle(Vehicle vehicle)
+        protected virtual bool CanDriveThisVehicle()
         {
-            bool isAbleTo = false;
-            
-            if (vehicle is Car)
-            {
-                isAbleTo = true;
-            }
-            
-            return isAbleTo;
+            return (this.vehicle is Car);           
         }
 
-        public virtual void ObtainDriverLicense()
+        public virtual void DriveVehicle()
         {
-            int age = DateTime.Today.Year - this.GetDateOfBirth().Year;
-
-            if (age < 18)
+            if (this.CanDriveThisVehicle())
             {
-                Console.WriteLine("You are not old enough to get a driver's license");
+                this.vehicle.StartEngine();
+                Thread.Sleep(2000);
+                Console.WriteLine("Driving...");
             }
-            else this._licenseId = $"{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}";
+            else Console.WriteLine($"{this.name} doesn't know how to drive this vehicle");            
         }
+
+        public virtual string ObtainDriverLicense()
+        {
+           this.SetLicense($"{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}");
+
+            return this.licenseId;
+        }
+
     }
 }
