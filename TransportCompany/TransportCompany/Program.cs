@@ -1,24 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
-	class Program
-	{
-		static void Main(string[] args) 
-		{
-			RunConsoleApp();
-		}
-
-		private static void RunConsoleApp()
-		{
-			Console.WriteLine("Hello User!");
-
-			
-			// Your code here...
-
-
-			Console.WriteLine("Thank you for using our services. Press any key to exit...");
-			Console.ReadLine();
-		}
-	}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //
+        }
+    }
 }

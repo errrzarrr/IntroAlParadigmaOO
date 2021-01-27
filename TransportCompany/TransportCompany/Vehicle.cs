@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
-	abstract class Vehicle
+	abstract public class Vehicle
 	{
 		protected int wheels;
 
-		internal abstract void StartpEngine();
-		internal abstract void StopEngine();
+        protected internal abstract void StartEngine();
+		protected internal abstract void StopEngine();
+
+		public abstract void SetWheels(int wheels);
+		public int GetWheels()
+        {
+			return this.wheels;
+        }
 	}
 }
 
