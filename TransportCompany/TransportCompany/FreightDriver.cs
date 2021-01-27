@@ -2,10 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class FreightDriver : Driver
     {
+        protected double fee;
+
+        public void SetFee(double fee)
+        {
+            if (fee < 0)
+            {
+                Console.WriteLine("You must provide a positive amount");
+            }
+            else this.fee = fee;
+        }
+        public double GetFee()
+        {
+            return this.fee;
+        }
+
         public override void SetLicense(string licenseId)
         {
             if (this.age < 20)
@@ -21,12 +36,12 @@ namespace ClientApp
 
         protected override bool CanDriveThisVehicle()
         {
-            return (vehicle is Truck) ? true : false;
+            return ((vehicle is Truck) || (vehicle is Freight));
         }
 
         public override string ObtainDriverLicense()
         {
-            this.licenseId = $"Heavy-{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}";
+            this.SetLicense($"Heavy-{this.GetName()}{this.GetDateOfBirth().Year}{this.GetDateOfBirth().Month}{this.GetDateOfBirth().Day}");
             return this.licenseId;
         }            
     }
