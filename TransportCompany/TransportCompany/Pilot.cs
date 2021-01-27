@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class Pilot : Driver
     {
@@ -53,7 +53,7 @@ namespace ClientApp
 
         private bool CanDriveAtHighSpeed()
         {
-            return (this.maxDrivingSpeed < 150) ? false : true;
+            return this.maxDrivingSpeed >= 150;
         }
 
         public override string ObtainDriverLicense()
