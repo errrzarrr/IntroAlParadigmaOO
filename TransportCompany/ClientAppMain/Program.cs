@@ -1,4 +1,4 @@
-﻿using ClientApp;
+﻿using ClientAppClassLIbrary;
 using System;
 
 namespace ClientAppMain
@@ -13,7 +13,25 @@ namespace ClientAppMain
 		private static void RunConsoleApp()
 		{
 			Console.WriteLine("Hello User!");
-			
+
+			TaxyDriver junior = new TaxyDriver();
+			junior.SetName("Junior");
+			junior.SetFee(100);
+			junior.SetDateOfBirth(198, 3, 5);
+			junior.SetLicense(junior.ObtainDriverLicense());
+			Vehicle ford = new Car();
+			junior.SetVehicle(ford);
+			Console.WriteLine(junior.GetAge());
+			Console.WriteLine(junior.GetDateOfBirth());
+			Console.WriteLine(junior.GetFee());
+			Console.WriteLine(junior.GetLicense());
+			Console.WriteLine(junior.GetName());
+			Console.WriteLine(junior.GetVehicle());
+			junior.Talk();
+			junior.DriveVehicle();
+
+
+			/*
 			//Test PayFee() Passed
 			Passenger passFrancisco = new Passenger();
 			passFrancisco.SetName("Francisco");
@@ -21,7 +39,7 @@ namespace ClientAppMain
 			tdJorge.SetName("Jorge");
 			tdJorge.SetFee(100);
 			passFrancisco.PayShuttleFee(tdJorge);
-			/*
+			
 			//Test TaxyDriver.DrivePassenger() Passed
 			Vehicle hyundaiSonata = new Car();
 			tdJorge.SetVehicle(hyundaiSonata);
