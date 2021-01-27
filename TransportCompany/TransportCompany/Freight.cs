@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class Freight : Vehicle
     {
@@ -14,12 +14,13 @@ namespace ClientApp
             {
                 this.loadCapacityTon = loadCapacityTon; 
             } else Console.WriteLine("The load capacity of the freight must be greater than 0 metric tons");
-        }             
-
-        public override int GetWheels()
-        {
-            throw new NotImplementedException();
         }
+        
+        public int GetLoadCapacity()
+        {
+            return this.loadCapacityTon;
+        }
+                
         public override void SetWheels(int wheels)
         {
             if (wheels == 8 || wheels == 10)
@@ -28,7 +29,7 @@ namespace ClientApp
             }
             else this.wheels = wheels;
         }
-
+        
         protected internal override void StartEngine()
         {
             Console.WriteLine("Starting freight on");
