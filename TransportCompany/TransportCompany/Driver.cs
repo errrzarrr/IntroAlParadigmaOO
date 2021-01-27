@@ -3,27 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class Driver : Person, IDriver
     {
         protected string licenseId;
         protected Vehicle vehicle;
-        protected double fee;
-
-        public void SetFee(double fee)
-        {
-            if (fee < 0)
-            {
-                Console.WriteLine("You must provide a positive number");
-            }
-            else this.fee = fee;
-        }
-        public double GetFee()
-        {
-            return this.fee;
-        }
-
+        
         public virtual void SetLicense(string licenseId)
         {
             if (this.age < 18)
@@ -52,7 +38,7 @@ namespace ClientApp
                 
         protected virtual bool CanDriveThisVehicle()
         {
-            return (this.vehicle is Car) ? true : false;           
+            return (this.vehicle is Car);           
         }
 
         public virtual void DriveVehicle()
