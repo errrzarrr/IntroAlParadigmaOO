@@ -3,17 +3,30 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace ClientApp
+namespace ClientAppClassLIbrary
 {
     public class TaxyDriver : Driver
-    {           
+    {
+        protected double fee;
+
+        public void SetFee(double fee)
+        {
+            if (fee < 0)
+            {
+                Console.WriteLine("You must provide a positive amount");
+            }
+            else this.fee = fee;
+        }
+        public double GetFee()
+        {
+            return this.fee;
+        }
+
         public void DrivePassenger(Passenger passenger)
         {
             Console.WriteLine($"Taxy driver {this.name} will drive {passenger.GetName()} from {passenger.GetOrigin()} to {passenger.GetDestination()}\n");
             Thread.Sleep(1000);
 
-            this.vehicle.StartEngine();
-            Thread.Sleep(1000);
             this.DriveVehicle();
             Thread.Sleep(4000);
 
